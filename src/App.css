@@ -78,3 +78,16 @@ blockquote p {
 .left {
   grid-column: 6 / 12;
 }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+a {
+  color: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}

@@ -7,8 +7,10 @@ import spaceImage from './assets/space.jpg'
 import normal from './assets/normal_texture.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobe } from '@fortawesome/free-solid-svg-icons'
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import { faEnvelope, faFileAlt } from '@fortawesome/free-regular-svg-icons'
 import { faFacebookSquare, faLinkedin, faGithubSquare } from '@fortawesome/free-brands-svg-icons'
+import ScrollToTop from "./ScrollToTop";
+
 
 function App() {
   // Similar to componentDidMount and componentDidUpdate:
@@ -143,11 +145,27 @@ function App() {
         <header>
           <h1>KitefishBB</h1>
           <p>🚀 kitefishBB in space!</p>
-          <FontAwesomeIcon icon={faFacebookSquare} />
-          <FontAwesomeIcon icon={faLinkedin} />
-          <FontAwesomeIcon icon={faGithubSquare} />
-          <FontAwesomeIcon icon={faGlobe} />
-          <FontAwesomeIcon icon={faEnvelope} />
+          <div class="container">
+            <a href="https://www.facebook.com/wmsam91/" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faFacebookSquare} alt="kitefishBB's FB profile" />
+            </a>
+            <a href="https://www.linkedin.com/in/wmsam/" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faLinkedin} alt="kiteFishBB's LinkedIn profile" />
+            </a>
+            <a href="https://github.com/abx123" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faGithubSquare} alt="kiteFishBB's GitHub profile" />
+            </a>
+            <a href="https://kitefishbb.wmsam.xyz" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faGlobe} alt="kiteFishBB's personal website" />
+            </a>
+            <a href="mailto:wmsam91@gmail.com">
+              <FontAwesomeIcon icon={faEnvelope} alt="kiteFishBB's personal email" />
+            </a>
+            <a href="#resume">
+              <FontAwesomeIcon icon={faFileAlt} alt="kiteFishBB's resume" />
+            </a>
+          </div>
+
         </header>
 
 
@@ -210,7 +228,7 @@ function App() {
           <p>:bb-heart-break::bb-sad-again: <br />-kitefishBB</p>
         </blockquote>
 
-        <section class="left">
+        <section class="left" id="resume">
           <h2>🌮 Work History</h2>
 
           <h3>McDonalds</h3>
@@ -243,6 +261,8 @@ function App() {
         <blockquote>
           <p>Thanks for watching!</p>
         </blockquote>
+
+        <ScrollToTop />
 
 
       </main>
