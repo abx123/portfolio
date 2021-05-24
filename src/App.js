@@ -5,6 +5,10 @@ import bbImage from './assets/1.png'
 import moonImage from './assets/moon.jpg'
 import spaceImage from './assets/space.jpg'
 import normal from './assets/normal_texture.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import { faFacebookSquare, faLinkedin, faGithubSquare } from '@fortawesome/free-brands-svg-icons'
 
 function App() {
   // Similar to componentDidMount and componentDidUpdate:
@@ -139,6 +143,11 @@ function App() {
         <header>
           <h1>KitefishBB</h1>
           <p>🚀 kitefishBB in space!</p>
+          <FontAwesomeIcon icon={faFacebookSquare} />
+          <FontAwesomeIcon icon={faLinkedin} />
+          <FontAwesomeIcon icon={faGithubSquare} />
+          <FontAwesomeIcon icon={faGlobe} />
+          <FontAwesomeIcon icon={faEnvelope} />
         </header>
 
 
