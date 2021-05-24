@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import * as THREE from "three";
-import jeffImage from './assets/jeff.png'
+import bbImage from './assets/1.png'
 import moonImage from './assets/moon.jpg'
 import spaceImage from './assets/space.jpg'
 import normal from './assets/normal_texture.jpg'
@@ -62,11 +62,11 @@ function App() {
 
     // Avatar
 
-    const jeffTexture = new THREE.TextureLoader().load(jeffImage);
+    const bbTexture = new THREE.TextureLoader().load(bbImage);
 
-    const jeff = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: jeffTexture }));
+    const bb = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: bbTexture }));
 
-    scene.add(jeff);
+    scene.add(bb);
 
     // Moon
 
@@ -86,8 +86,8 @@ function App() {
     moon.position.z = 30;
     moon.position.setX(-10);
 
-    jeff.position.z = -5;
-    jeff.position.x = 2;
+    bb.position.z = -5;
+    bb.position.x = 2;
 
     // Scroll Animation
 
@@ -97,8 +97,8 @@ function App() {
       moon.rotation.y += 0.075;
       moon.rotation.z += 0.05;
 
-      jeff.rotation.y += 0.01;
-      jeff.rotation.z += 0.01;
+      bb.rotation.y += 0.01;
+      bb.rotation.z += 0.01;
 
       camera.position.z = t * -0.01;
       camera.position.x = t * -0.0002;
@@ -117,6 +117,10 @@ function App() {
       torus.rotation.y += 0.005;
       torus.rotation.z += 0.01;
 
+      bb.rotation.x += 0.005;
+      bb.rotation.y += 0.005;
+      bb.rotation.z += 0.005;
+
       moon.rotation.x += 0.005;
 
       // controls.update();
@@ -134,12 +138,12 @@ function App() {
 
         <header>
           <h1>KitefishBB</h1>
-          <p>🚀 Welcome to my website!</p>
+          <p>🚀 kitefishBB in space!</p>
         </header>
 
 
         <blockquote>
-          <p>I like making stuff and putting it on the internet</p>
+          <p>:bb-emo-bb-cry::bb-cry-till-flood:</p>
         </blockquote>
 
         <section>
@@ -194,7 +198,7 @@ function App() {
         </section>
 
         <blockquote>
-          <p>The best way out is always through <br />-Robert Frost</p>
+          <p>:bb-heart-break::bb-sad-again: <br />-kitefishBB</p>
         </blockquote>
 
         <section class="left">
