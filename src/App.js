@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import * as THREE from "three";
 import bbImage from './assets/1.png'
@@ -6,14 +6,22 @@ import moonImage from './assets/moon.jpg'
 import spaceImage from './assets/space.jpg'
 import normal from './assets/normal_texture.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { faGlobe, faCertificate, faTasks, faUniversity, faBriefcase } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope, faFileAlt } from '@fortawesome/free-regular-svg-icons'
-import { faFacebookSquare, faLinkedin, faGithubSquare } from '@fortawesome/free-brands-svg-icons'
+import { faFacebookSquare, faLinkedin, faGithubSquare, faAws, faGoogle, faMicrosoft, faHackerrank } from '@fortawesome/free-brands-svg-icons'
 import ScrollToTop from "./ScrollToTop";
+import axios from 'axios';
+import Moment from 'react-moment';
 
 
 function App() {
-  // Similar to componentDidMount and componentDidUpdate:
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [edu, setEdu] = useState([{ instituteName: "" }]);
+  const [mooc, setMooc] = useState([{ name: "" }]);
+  const [certifications, setCertifications] = useState([{ name: "" }]);
+  const [experience, setExperience] = useState([{ title: "" }]);
+  const [person, setPerson] = useState([{ name: "" }]);
+
   useEffect(() => {
 
     var scene = new THREE.Scene();
@@ -134,143 +142,252 @@ function App() {
       renderer.render(scene, camera);
     }
 
+    function getResume() {
+      axios.get(`https://api.wmsam.dev/resume/5fce43ac93ea06c6dabec228`)
+        .then(res => {
+          const resume = res.data;
+          setPerson(resume.person)
+          setExperience(resume.experience)
+          setEdu(resume.educations)
+          setMooc(resume.mooc)
+          setCertifications(resume.cetrifications)
+          setIsLoaded(true)
+        })
+    }
+
     animate();
+
+    getResume()
+
+
   }, []);
   return (
     <React.Fragment>
       <canvas id="bg"></canvas >
+      {isLoaded ?
+        <main>
 
-      <main>
+          <header>
+            <h1>Wing Ming SAM</h1>
+            {/* 🚀  */}
+            <p>Experienced fullstack engineer with multi-cloud certifications.</p>
+            <div class="container">
+              <a href="https://www.facebook.com/wmsam91/" target="_blank" rel="noreferrer">
+                <FontAwesomeIcon icon={faFacebookSquare} />
+              </a>
+              <a href="https://www.linkedin.com/in/wmsam/" target="_blank" rel="noreferrer">
+                <FontAwesomeIcon icon={faLinkedin} />
+              </a>
+              <a href="https://github.com/abx123" target="_blank" rel="noreferrer">
+                <FontAwesomeIcon icon={faGithubSquare} />
+              </a>
+              <a href="https://www.wmsam.xyz" target="_blank" rel="noreferrer">
+                <FontAwesomeIcon icon={faGlobe} />
+              </a>
+              <a href="mailto:wmsam91@gmail.com">
+                <FontAwesomeIcon icon={faEnvelope} />
+              </a>
+              <a href="https://s3-ap-southeast-1.amazonaws.com/www.wmsam.xyz/2021+-+Resume.docx" target="_blank" rel="noreferrer">
+                <FontAwesomeIcon icon={faFileAlt} />
+              </a>
+            </div>
 
-        <header>
-          <h1>KitefishBB</h1>
-          <p>🚀 kitefishBB in space!</p>
-          <div class="container">
-            <a href="https://www.facebook.com/wmsam91/" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faFacebookSquare} alt="kitefishBB's FB profile" />
-            </a>
-            <a href="https://www.linkedin.com/in/wmsam/" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faLinkedin} alt="kiteFishBB's LinkedIn profile" />
-            </a>
-            <a href="https://github.com/abx123" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faGithubSquare} alt="kiteFishBB's GitHub profile" />
-            </a>
-            <a href="https://kitefishbb.wmsam.xyz" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faGlobe} alt="kiteFishBB's personal website" />
-            </a>
-            <a href="mailto:wmsam91@gmail.com">
-              <FontAwesomeIcon icon={faEnvelope} alt="kiteFishBB's personal email" />
-            </a>
-            <a href="#resume">
-              <FontAwesomeIcon icon={faFileAlt} alt="kiteFishBB's resume" />
-            </a>
-          </div>
-
-        </header>
-
-
-        <blockquote>
-          <p>:bb-emo-bb-cry::bb-cry-till-flood:</p>
-        </blockquote>
-
-        <section>
-          <h2>📜 Manifesto</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.
-  </p>
-
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.
-  </p>
-
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.
-  </p>
-
-        </section>
-
-        <section class="light">
-          <h2>👩🏽‍🚀 Projects</h2>
-
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.
-  </p>
-
-          <h2>🏆 Accomplishments</h2>
-
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.
-  </p>
-
-        </section>
-
-        <blockquote>
-          <p>:bb-heart-break::bb-sad-again: <br />-kitefishBB</p>
-        </blockquote>
-
-        <section class="left" id="resume">
-          <h2>🌮 Work History</h2>
-
-          <h3>McDonalds</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.
-  </p>
-          <h3>Burger King</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.
-  </p>
-          <h3>Taco Bell</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.
-  </p>
-
-        </section>
-
-        <blockquote>
-          <p>Thanks for watching!</p>
-        </blockquote>
-
-        <ScrollToTop />
+          </header>
 
 
-      </main>
+          <blockquote>
+            <p>To learn something new, you need to try new things and not be afraid to be wrong. <br />-Roy T. Bennett</p>
+          </blockquote>
 
+          <section>
+            <h2>📜 Manifesto</h2>
+            <p>
+              A typical kinesthetic learner and goal driven person with interest in everything. Enjoys dissecting things
+              down to the smallest component and attempts to figure out the function of each and every part. Adaptable to
+              any kind of environment.
+            </p>
+            <h2>📜 Skills</h2>
+            {person.skills.map((s) =>
+              <li>{s}</li>
+            )}
+          </section>
+          <section class="left">
+            <h2>🏫 Education</h2>
+            {edu.map((e) =>
+              <Edu edu={e} />
+            )}
+          </section>
+          <section class="light">
+            <h2>👩🏽‍🚀 Projects</h2>
+            <h3>
+              <FontAwesomeIcon icon={faTasks} />
+              &nbsp;&nbsp;
+              <a href="https://github.com/abx123/apiv2" target="_blank" rel="noreferrer">
+                Novel crawler
+              </a>
+            </h3>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Crawls novelfull.com for any web novel updates, sends a notification to slack channel to inform on new chapters.<br />
+              <i>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- written using Golang, data stored in Firebase
+              </i>
+            </p>
+            <h3>
+              <FontAwesomeIcon icon={faTasks} />
+              &nbsp;&nbsp;
+              <a href="https://github.com/abx123/coronachan" target="_blank" rel="noreferrer">
+                MY COVID-19 daily update bot
+              </a>
+            </h3>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scrapes Malaysia Ministry of Health twitter account for daily COVID updates and share them to slack channel. <br />
+              <i>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - written using Python, hosted with AWS Lambda
+              </i>
+            </p>
+            <h3>
+              <FontAwesomeIcon icon={faTasks} />
+              &nbsp;&nbsp;
+              <a href="https://github.com/abx123/resume-api" target="_blank" rel="noreferrer">
+                Resume API
+              </a>
+            </h3>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stores all data needed to populate my portfolio site. <br />
+              <i>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- written using Java spring boot, data stored using MongoDB, dockerized and hosted with AWS ECS
+              </i>
+            </p>
+            <h3>
+              <FontAwesomeIcon icon={faTasks} />
+              &nbsp;&nbsp;
+              <a href="https://github.com/abx123/portfolio" target="_blank" rel="noreferrer">
+                Portfolio site
+              </a>
+            </h3>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Static site to display data stored in mongoDB.<br />
+              <i>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- written using ReactJS and ThreeJS, hosted with AWS S3
+              </i>
+            </p>
+          </section>
 
+          <section class="left">
+            <h2>🌮 Work History</h2>
+            {experience.map((e) =>
+              <Work exp={e} />
+            )}
+          </section>
+
+          <section>
+            <h2>
+              📜 Certifications
+            </h2>
+            {certifications.map(c => <Certifications certifications={c} />)}
+          </section>
+          <section class="left">
+            <h2>
+              📜 Massive Open Online Courses
+            </h2>
+            {mooc.map(m => <Moocs moocs={m} />)}
+          </section>
+
+          <ScrollToTop />
+        </main>
+        : null}
     </React.Fragment>
 
   );
+}
+function CertIcon(props) {
+  let fa = null
+  switch (props.issuedBy) {
+    case "Amazon Web Services":
+      fa = faAws
+      break;
+    case "Google Cloud":
+      fa = faGoogle
+      break;
+    case "Google Cloud Platform":
+      fa = faGlobe
+      break;
+    case "Microsoft":
+      fa = faMicrosoft
+      break;
+    case "HackerRank":
+      fa = faHackerrank
+      break;
+    default:
+      fa = faCertificate
+  }
+  return (<FontAwesomeIcon icon={fa} />)
+}
+
+function Work(props) {
+  const { title, companyName, location, startDate, endDate, description } = props.exp;
+  return (
+    <p>
+      <FontAwesomeIcon icon={faBriefcase} />
+      &nbsp;
+      {title} @ {companyName} - {location}<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <Moment format="MM/YYYY">{startDate}</Moment> - <Moment format="MM/YYYY">{endDate}</Moment> <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      {description.map((d) =>
+        <li>{d}</li>
+      )}
+    </p>
+  )
+}
+
+function Edu(props) {
+  const { type, instituteName, location, startDate, endDate, grade } = props.edu;
+  return (
+    <div>
+      <FontAwesomeIcon icon={faUniversity} />
+      &nbsp;
+      {instituteName}, {location} - {type}<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <Moment format="MM/YYYY">{startDate}</Moment> - <Moment format="MM/YYYY">{endDate}</Moment> <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      Graduated with {grade}
+    </div>
+  )
+}
+
+function Certifications(props) {
+  const { name, issuedBy, issueDate, expireDate, credentialURL } = props.certifications;
+  return (
+    <div>
+      <h4>
+        <CertIcon issuedBy={issuedBy} />
+        &nbsp;&nbsp;
+        <a href={credentialURL} target="_blank" rel="noreferrer">
+          {name} By {issuedBy}
+        </a>
+      </h4>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Issue date: <Moment format="DD/MM/YYYY">{issueDate}</Moment> {expireDate == null ? null : <>valid till <Moment format="DD/MM/YYYY">{expireDate}</Moment></>}<br />
+    </div>
+  )
+}
+
+function Moocs(props) {
+  const { name, issuedBy, issueDate, credentialURL } = props.moocs;
+  return (
+    <div>
+      <h4>
+        <CertIcon issuedBy={issuedBy} />
+        &nbsp;&nbsp;
+        <a href={credentialURL} target="_blank" rel="noreferrer">
+          {name} By {issuedBy}
+        </a>
+      </h4>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Issue date: <Moment format="DD/MM/YYYY">{issueDate}</Moment><br />
+    </div>
+  )
 }
 
 export default App;

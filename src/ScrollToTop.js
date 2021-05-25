@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { FaArrowCircleUp } from 'react-icons/fa';
-import { Button } from './Styles';
+import './App.css';
 
 const ScrollToTop = () => {
 
@@ -20,19 +20,16 @@ const ScrollToTop = () => {
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
-            /* you can also use 'auto' behaviour
-               in place of 'smooth' */
         });
     };
 
     window.addEventListener('scroll', toggleVisible);
 
     return (
-        <Button>
+        <div class="scroll">
             <FaArrowCircleUp onClick={scrollToTop}
                 style={{ display: visible ? 'inline' : 'none' }} />
-        </Button>
+        </div>
     );
 }
 
