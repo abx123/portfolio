@@ -6,7 +6,7 @@ import moonImage from './assets/moon.jpg'
 import spaceImage from './assets/space.jpg'
 import normal from './assets/normal_texture.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGlobe, faCertificate, faTasks, faUniversity, faBriefcase } from '@fortawesome/free-solid-svg-icons'
+import { faGlobe, faCertificate, faTasks, faUniversity, faBriefcase, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope, faFileAlt } from '@fortawesome/free-regular-svg-icons'
 import { faFacebookSquare, faLinkedin, faGithubSquare, faAws, faGoogle, faMicrosoft, faHackerrank } from '@fortawesome/free-brands-svg-icons'
 import ScrollToTop from "./ScrollToTop";
@@ -222,14 +222,57 @@ function App() {
             <h3>
               <FontAwesomeIcon icon={faTasks} />
               &nbsp;&nbsp;
-              <a href="https://github.com/abx123/apiv2" target="_blank" rel="noreferrer">
+              <a href="https://github.com/abx123/crawler" target="_blank" rel="noreferrer">
                 Novel crawler
               </a>
             </h3>
             <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Crawls novelfull.com for any web novel updates, sends a notification to slack channel to inform on new chapters.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Crawls novelfull.com for any web novel updates, stores them in firebase and sends a notification to slack channel to inform on new chapters.<br />
               <i>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- written using Golang, data stored in Firebase
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- written using Golang, data stored in Firebase, hosted using AWS Lambda behind AWS API Gateway
+              </i>
+            </p>
+            <h3>
+              <FontAwesomeIcon icon={faTasks} />
+              &nbsp;&nbsp;
+              <a href="https://github.com/abx123/apiv2" target="_blank" rel="noreferrer">
+                Novels API
+              </a>
+
+            </h3>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retrieves novel stored in firebase by scrapper.
+              &nbsp;&nbsp;
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
+              &nbsp;&nbsp;
+              <a href="https://abx123.github.io/apiv2" target="_blank" rel="noreferrer">
+                API Documentation
+              </a>
+              <br />
+              <i>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- written using Golang, Firebase as data source, hosted using AWS Lambda behind AWS API Gateway
+              </i>
+            </p>
+            <h3>
+              <FontAwesomeIcon icon={faTasks} />
+              &nbsp;&nbsp;
+              <a href="https://github.com/abx123/bb-reader" target="_blank" rel="noreferrer">
+                Novel reader
+              </a>
+              &nbsp;&nbsp;
+
+            </h3>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Simple UI to display all stored novels
+              &nbsp;&nbsp;
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
+              &nbsp;&nbsp;
+              <a href="https://reader.wmsam.xyz/" target="_blank" rel="noreferrer">
+                Link
+              </a>
+              <br />
+              <i>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- written using ReactJS, hosted with AWS S3
               </i>
             </p>
             <h3>
@@ -253,7 +296,14 @@ function App() {
               </a>
             </h3>
             <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stores all data needed to populate my portfolio site. <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stores all data needed to populate my portfolio site.
+              &nbsp;&nbsp;
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
+              &nbsp;&nbsp;
+              <a href="https://abx123.github.io/resume-api" target="_blank" rel="noreferrer">
+                API Documentation
+              </a>
+              <br />
               <i>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- written using Java spring boot, data stored using MongoDB, dockerized and hosted with AWS ECS
               </i>
@@ -310,7 +360,7 @@ function CertIcon(props) {
       fa = faGoogle
       break;
     case "Google Cloud Platform":
-      fa = faGlobe
+      fa = faGoogle
       break;
     case "Microsoft":
       fa = faMicrosoft
