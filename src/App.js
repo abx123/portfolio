@@ -219,6 +219,40 @@ function App() {
           </section>
           <section class="light">
             <h2>👩🏽‍🚀 Projects</h2>
+
+            <h3>
+              <FontAwesomeIcon icon={faTasks} />
+              &nbsp;&nbsp;
+              <a href="https://github.com/abx123/go-isbn" target="_blank" rel="noreferrer">
+                Go-ISBN
+              </a>
+            </h3>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Simple golang package to get book details using ISBN.<br />
+              <i>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- written using Golang
+              </i>
+            </p>
+            <h3>
+              <FontAwesomeIcon icon={faTasks} />
+              &nbsp;&nbsp;
+              <a href="https://github.com/abx123/library" target="_blank" rel="noreferrer">
+                Library API
+              </a>
+            </h3>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Simple REST API backend to keep track of all my books.
+              &nbsp;&nbsp;
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
+              &nbsp;&nbsp;
+              <a href="https://library.wmsam.xyz/" target="_blank" rel="noreferrer">
+                API Documentation
+              </a>
+              <br />
+              <i>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- written using Golang, data stored in mysql, dockerized and hosted with AWS ECS
+              </i>
+            </p>
             <h3>
               <FontAwesomeIcon icon={faTasks} />
               &nbsp;&nbsp;
