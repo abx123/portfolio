@@ -150,7 +150,7 @@ function App() {
           setExperience(resume.experience)
           setEdu(resume.educations)
           setMooc(resume.mooc)
-          setCertifications(resume.cetrifications)
+          setCertifications(resume.certifications)
           setIsLoaded(true)
         })
     }
@@ -409,7 +409,7 @@ function CertIcon(props) {
 }
 
 function Work(props) {
-  const { title, companyName, location, startDate, endDate, description } = props.exp;
+  const { title, companyName, location, startDate, endDate, descriptions } = props.exp;
   return (
     <p>
       <FontAwesomeIcon icon={faBriefcase} />
@@ -418,7 +418,7 @@ function Work(props) {
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <Moment format="MM/YYYY">{startDate}</Moment> - <Moment format="MM/YYYY">{endDate}</Moment> <br />
       &nbsp;&nbsp;&nbsp;&nbsp;
-      {description.map((d) =>
+      {descriptions.map((d) =>
         <li>{d}</li>
       )}
     </p>
@@ -452,7 +452,7 @@ function Certifications(props) {
         </a>
       </h4>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      Issue date: <Moment format="DD/MM/YYYY">{issueDate}</Moment> {expireDate == null ? null : <>valid till <Moment format="DD/MM/YYYY">{expireDate}</Moment></>}<br />
+      Issue date: <Moment format="DD/MM/YYYY">{issueDate}</Moment> {expireDate === "0001-01-01T00:00:00Z" ? null : <>valid till <Moment format="DD/MM/YYYY">{expireDate}</Moment></>}<br />
     </div>
   )
 }
