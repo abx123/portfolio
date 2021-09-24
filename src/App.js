@@ -21,6 +21,7 @@ function App() {
   const [certifications, setCertifications] = useState([{ name: "" }]);
   const [experience, setExperience] = useState([{ title: "" }]);
   const [person, setPerson] = useState([{ name: "" }]);
+  const [covid, setCovid] = useState([{ date: "" }]);
 
   useEffect(() => {
 
@@ -155,9 +156,16 @@ function App() {
         })
     }
 
-    animate();
+    function getCovid() {
+      axios.get(`https://api.wmsam.dev/covid/my`)
+        .then(res => {
+          setCovid(res.data)
+        })
+    }
 
+    animate();
     getResume()
+    getCovid()
 
 
   }, []);
@@ -191,8 +199,10 @@ function App() {
                 <FontAwesomeIcon icon={faFileAlt} />
               </a>
             </div>
-
           </header>
+          <br />
+          <br />
+          <Covid data={covid} />
 
 
           <blockquote>
@@ -423,6 +433,46 @@ function Work(props) {
       )}
     </p>
   )
+}
+
+function Covid(props) {
+  const { Date, NewCases, ImportCases, RecoveredCases, Death } = props.data;
+  return (
+    <section class="covid">
+      <div>
+        <h2>COVID MY Situation as of {Date}</h2>
+        <table>
+          <tr>
+            <th>New Cases</th>
+            <th>Import Cases</th>
+            <th>Recovered Cases</th>
+          </tr>
+          <tr>
+            <td>{NewCases}</td>
+            <td>{ImportCases}</td>
+            <td>{RecoveredCases}</td>
+          </tr>
+          <tr />
+          <tr>
+            <th>New Deaths</th>
+            <th>Actual Deaths</th>
+            <th>Brought in Dead (BID)</th>
+          </tr>
+          <tr>
+            <td>{Death.NewDeaths}</td>
+            <td>{Death.ActualDeaths}</td>
+            <td>{Death.BIDDeaths}</td>
+          </tr>
+        </table>
+        <div class="footer">
+          Data from <a href="https://github.com/MoH-Malaysia/covid19-public" target="_blank" rel="noreferrer">
+            Malaysian Ministry of Health GitHub Repo
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+
 }
 
 function Edu(props) {

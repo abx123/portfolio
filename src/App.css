@@ -8,7 +8,7 @@ canvas {
 
 :root {
   --dark-bg: rgba(15, 15, 15, 0.95);
-  --spacing: 350px;
+  --spacing: 50px;
 
   font-family: brandon-grotesque, sans-serif;
   font-weight: 400;
@@ -52,7 +52,7 @@ header {
 }
 
 section {
-  grid-column: 2 / 8;
+  grid-column: 2 / span 8;
   padding: 1rem;
   background: var(--dark-bg);
   font-size: 1.25rem;
@@ -79,6 +79,11 @@ blockquote p {
   grid-column: 6 / 12;
 }
 
+.covid {
+  text-align: center;
+  grid-column: 2 / span 5;
+}
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -102,4 +107,13 @@ html {
   z-index: 1;
   cursor: pointer;
   color: lightgrey;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+}
+
+.footer {
+  text-align: right;
 }
