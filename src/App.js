@@ -195,7 +195,7 @@ function App() {
               <a href="mailto:wmsam91@gmail.com">
                 <FontAwesomeIcon icon={faEnvelope} />
               </a>
-              <a href="https://s3-ap-southeast-1.amazonaws.com/www.wmsam.xyz/2021+-+Resume.docx" target="_blank" rel="noreferrer">
+              <a href="https://s3-ap-southeast-1.amazonaws.com/www.wmsam.xyz/2022+-+Resume.docx" target="_blank" rel="noreferrer">
                 <FontAwesomeIcon icon={faFileAlt} />
               </a>
             </div>
