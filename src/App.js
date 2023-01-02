@@ -195,7 +195,7 @@ function App() {
               <a href="mailto:wmsam91@gmail.com">
                 <FontAwesomeIcon icon={faEnvelope} />
               </a>
-              <a href="https://s3-ap-southeast-1.amazonaws.com/www.wmsam.xyz/2022+-+Resume.docx" target="_blank" rel="noreferrer">
+              <a href="https://s3-ap-southeast-1.amazonaws.com/www.wmsam.xyz/2023+-+Resume.docx" target="_blank" rel="noreferrer">
                 <FontAwesomeIcon icon={faFileAlt} />
               </a>
             </div>
@@ -212,7 +212,7 @@ function App() {
           <section>
             <h2>📜 Manifesto</h2>
             <p>
-              A typical kinesthetic learner and goal driven person with interest in everything. Enjoys dissecting things
+              A jack of all trades kinesthetic learner and goal driven person with interest in everything. Enjoys dissecting things
               down to the smallest component and attempts to figure out the function of each and every part. Adaptable to
               any kind of environment.
             </p>
